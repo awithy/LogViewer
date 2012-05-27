@@ -1,0 +1,30 @@
+﻿<Window x:Class="LogViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Log Viewer" 
+        WindowStartupLocation="CenterScreen"
+        Height="600" 
+        Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Filter Level" Click="_ShowFilterLevelDialog"/>
+            <Button Content="Filter Source" Click="_ShowFilterSourceDialog"/>
+            <Button Content="Filter Search" Click="_ShowFilterSearchDialog"/>
+        </StackPanel>
+        <DataGrid ItemsSource="{Binding CurrentLines}" AutoGenerateColumns="False" Grid.Row="1" VirtualizingStackPanel.IsVirtualizing="True" AlternatingRowBackground="WhiteSmoke" ColumnHeaderHeight="0" RowHeaderWidth="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding DateTime}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Source}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding LogLevel}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding ConfigKey}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding InstanceId}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding ThreadId}" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Message}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

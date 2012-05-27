@@ -1,0 +1,25 @@
+﻿<Window x:Class="LogViewer.FilterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="FilterView" Height="400" Width="280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <ItemsControl ItemsSource="{Binding Filters}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding FilterName}" IsChecked="{Binding Selected}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Content="All" Click="_SelectAll" />
+            <Button Content="None" Click="_SelectNone" />
+        </StackPanel>
+    </Grid>
+</Window>
