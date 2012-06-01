@@ -53,6 +53,7 @@ namespace LogViewer
                 LogLevelFilterSelections.Add(new FilterSelectrion {FilterName = logLevel, Selected = true});
 
             SourceFilterSelections = new ObservableCollection<FilterSelectrion>();
+            _sources.Sort();
             foreach (var source in _sources)
                 SourceFilterSelections.Add(new FilterSelectrion {FilterName = source, Selected = true});
         }
@@ -80,7 +81,7 @@ namespace LogViewer
             var currentLine = "";
             foreach (var line in actualLines)
             {
-                if (line[0] == '[')
+                if (line.Length > 0 && line[0] == '[')
                 {
                     if (currentLine != "")
                         fileLines.Add(currentLine);
